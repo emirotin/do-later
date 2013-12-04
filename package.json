@@ -1,0 +1,23 @@
+{
+  "name": "do-later",
+  "version": "0.0.1",
+  "description": "do-later ========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/emirotin/do-later.git"
+  },
+  "author": "Eugene Mirotin <emirotin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emirotin/do-later/issues"
+  },
+  "homepage": "https://github.com/emirotin/do-later",
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "mongo-pool2": "0.0.1"
+  }
+}
