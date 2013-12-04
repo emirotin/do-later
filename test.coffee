@@ -5,8 +5,8 @@ DoLater = require('./index')
 config =
   host: 'localhost'
   port: 27017
-  db: 'likeandpay-qa'
-  collection: '_test_dolater'
+  db: '_dolater'
+  collection: '_test'
 
 mongoPool.connect config, (err, db) ->
   assert.equal err, null
