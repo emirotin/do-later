@@ -5,7 +5,7 @@ A delayed job implementation for Node
 
 Usage:
 
-    DoLater = require('do-later')
+    DoLater = require('do-later');
     doLater = new DoLater({
         host: 'localhost',
         port: 27017,

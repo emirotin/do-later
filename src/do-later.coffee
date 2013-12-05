@@ -15,7 +15,7 @@ module.exports = class DoLater
     @_pollInterval = 100
 
   doLater: (waitSec, jobName) ->
-    params = Array::slice.call(arguments, 2)
+    params = Array::slice.call(arguments, 1)
     tm = now()
     console.log 'DoLater adding job', jobName, 'at', Date(tm)
     job = { createdAt: tm, when: tm + waitSec * 1000, jobName, params }
@@ -68,7 +68,7 @@ module.exports = class DoLater
   _onJob: (job) ->
     tm = now()
     console.log 'DoLater executing job', job.jobName, 'at', Date(tm)
-    @_eventsHub.emit.apply @_eventsHub, [job.jobName].concat(job.params)
+    @_eventsHub.emit.apply @_eventsHub, job.params
 
   on: (jobName, fn) ->
     @_eventsHub.on jobName, fn
