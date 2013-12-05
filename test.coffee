@@ -21,9 +21,23 @@ scheduler.on 'x', (a, b, c) ->
   console.log 'job x executed with params', a, b, c
 
 scheduler.doLater 10, 'x', 1, 2, 3
-scheduler.doLater 1, 'x', 10, 20, 30
+scheduler.doLater 3, 'x', 10, 20, 30
 
 setTimeout ->
+  console.log "assert.equal res, 0"
+  assert.equal res, 0
+  console.log "OK"
+, 1000
+
+setTimeout ->
+  console.log "assert.equal res, 60"
+  assert.equal res, 60
+  console.log "OK"
+, 6000
+
+setTimeout ->
+  console.log "assert.equal res, 66"
   assert.equal res, 66
+  console.log "OK"
   process.exit(0)
 , 12000
