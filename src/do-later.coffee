@@ -1,4 +1,5 @@
 mongoPool = require 'mongo-pool2'
+{EventEmitter} = require('events')
 
 now = ->
   + new Date()
@@ -8,7 +9,7 @@ module.exports = class DoLater
     @_runningCheck = false
     @_poolReady = false
     @_buffer = []
-    @_eventsHub = new(require('events').EventEmitter)
+    @_eventsHub = new EventEmitter
     @_pool = mongoPool.create @config, =>
       @_onPoolReady()
     @_checkInterval = @config.interval or 1000
