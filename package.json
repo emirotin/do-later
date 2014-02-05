@@ -4,7 +4,7 @@
   "description": "Delayed job implementation for Node and MongoDB",
   "main": "lib/do-later.js",
   "scripts": {
-    "test": "./node_modules/.bin/coffee test.coffee"
+    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register -r should -t 20000"
   },
   "repository": {
     "type": "git",
