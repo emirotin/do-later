@@ -5,7 +5,8 @@
   "main": "lib/do-later.js",
   "scripts": {
     "test": "./node_modules/.bin/coffee test.coffee",
-    "compile": "./node_modules/.bin/coffee -c -o lib src"
+    "compile": "./node_modules/.bin/coffee -c -o lib src",
+    "watch": "./node_modules/.bin/coffee -w -o lib src"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
   "dependencies": {
     "mongo-pool2": "~0.0.3"
   },
-  "dependencies": {
+  "devDependencies": {
     "coffee-script": "~1.7.0"
   }
 }
