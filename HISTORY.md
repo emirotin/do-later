@@ -1,4 +1,5 @@
 0.0.5
+  - Now testing with Mocha
   - CoffeeScript removed from dependencies
 0.0.4 Minor optimization
 0.0.3 Better test and more recent version of mongo-pool2
