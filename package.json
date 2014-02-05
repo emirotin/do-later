@@ -2,9 +2,10 @@
   "name": "do-later",
   "version": "0.0.4",
   "description": "Delayed job implementation for Node and MongoDB",
-  "main": "index.js",
+  "main": "lib/do-later.js",
   "scripts": {
-    "test": "./node_modules/.bin/coffee test.coffee"
+    "test": "./node_modules/.bin/coffee test.coffee",
+    "compile": "./node_modules/.bin/coffee -c -o lib src"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/emirotin/do-later",
   "dependencies": {
-    "coffee-script": "~1.6.3",
     "mongo-pool2": "~0.0.3"
+  },
+  "dependencies": {
+    "coffee-script": "~1.7.0"
   }
 }
