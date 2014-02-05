@@ -1,6 +1,7 @@
+require('coffee-script/register')
 assert = require('assert')
 mongoPool = require('mongo-pool2')
-DoLater = require('./index')
+DoLater = require('./src/do-later')
 
 config =
   host: 'localhost'
