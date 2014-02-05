@@ -1,6 +1,6 @@
 {
   "name": "do-later",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Delayed job implementation for Node and MongoDB",
   "main": "lib/do-later.js",
   "scripts": {
