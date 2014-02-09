@@ -1,4 +1,5 @@
 assert = require('assert')
+DoLater = require('..')
 
 config =
   host: 'localhost'
@@ -8,6 +9,9 @@ config =
 
 module.exports =
   config: config
+
+  createDoLater: ->
+    new DoLater config
   
   beforeEach: (done) ->
     mongoPool = require('mongo-pool2')

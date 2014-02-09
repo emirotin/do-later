@@ -7,7 +7,7 @@ describe 'DoLater', ->
 
   it 'should run with given timing', (done) ->
     res = 0
-    scheduler = new DoLater testsCommon.config
+    scheduler = testsCommon.createDoLater()
 
     scheduler.on 'addThree', (a, b, c) ->
       res += a + b + c
