@@ -1,3 +1,4 @@
+0.0.7 Added helper constants .SECOND, .MINUTE, .HOUR, .DAY
 0.0.6 Now allows multiple listeners on the same collection, each listener only handles tasks it has subscribers for.
 0.0.5
   - Now testing with Mocha

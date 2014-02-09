@@ -95,3 +95,9 @@ module.exports = class DoLater
 
   jobNames: ->
     Object.keys @_jobNames
+
+# time helper methods
+DoLater.SECOND = 1
+DoLater.MINUTE = DoLater.SECOND * 60
+DoLater.HOUR = DoLater.MINUTE * 60
+DoLater.DAY = DoLater.HOUR * 24
