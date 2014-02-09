@@ -1,4 +1,5 @@
 mongoPool = require 'mongo-pool2'
+{EventEmitter} = require('events')
 
 now = ->
   + new Date()
@@ -8,7 +9,8 @@ module.exports = class DoLater
     @_runningCheck = false
     @_poolReady = false
     @_buffer = []
-    @_eventsHub = new(require('events').EventEmitter)
+    @_eventsHub = new EventEmitter
+    @_jobNames = {}
     @_pool = mongoPool.create @config, =>
       @_onPoolReady()
     @_checkInterval = @config.interval or 1000
@@ -52,7 +54,10 @@ module.exports = class DoLater
       return setTimeout checkFn, @_pollInterval
     @_runningCheck = true
     coll = @_coll()
-    query = when: $lt: now()
+    query =
+      when: $lt: now()
+      jobName: $in: @jobNames()
+
     sort = [['when', 1], ['createdAt', 1]]
     coll.findAndRemove query, sort, (err, job) =>
       @_runningCheck = false
@@ -71,4 +76,22 @@ module.exports = class DoLater
     @_eventsHub.emit.apply @_eventsHub, job.params
 
   on: (jobName, fn) ->
+    @_jobNames[jobName] ?= 0
+    @_jobNames[jobName] += 1
     @_eventsHub.on jobName, fn
+
+  off: (jobName, fn) ->
+    if fn?
+      @_jobNames[jobName] -= 1
+      if not @_jobNames[jobName]
+        delete @_jobNames[jobName]      
+      @_eventsHub.removeListener jobName, fn
+    else
+      if jobName
+        delete @_jobNames[jobName]
+      else
+        @_jobNames = {}
+      @_eventsHub.removeAllListeners jobName
+
+  jobNames: ->
+    Object.keys @_jobNames
