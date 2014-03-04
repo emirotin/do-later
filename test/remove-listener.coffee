@@ -1,4 +1,4 @@
-DoLater = require('..')
+DoLater = require('../src/do-later')
 testsCommon = require('./common')
 
 describe 'DoLater', ->

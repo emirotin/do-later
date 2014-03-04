@@ -11,8 +11,7 @@ module.exports = class DoLater
     @_buffer = []
     @_eventsHub = new EventEmitter
     @_jobNames = {}
-    @_pool = mongoPool.create @config, =>
-      @_onPoolReady()
+    mongoPool.create @config, @_onPoolReady.bind(@)
     @_checkInterval = @config.interval or 1000
     @_pollInterval = 100
 
@@ -29,7 +28,10 @@ module.exports = class DoLater
   _addBuffered: (job) ->
     @_buffer.push job
 
-  _onPoolReady: ->
+  _onPoolReady: (err, pool) ->
+    if err
+      throw err
+    @_pool = pool
     @_poolReady = true
     for jobSpec in @_buffer
       @_addJob jobSpec
