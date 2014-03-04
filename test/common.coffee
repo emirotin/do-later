@@ -1,5 +1,5 @@
-assert = require('assert')
 DoLater = require('..')
+mongoPool = require('mongo-pool2')
 
 config =
   host: 'localhost'
@@ -14,9 +14,9 @@ module.exports =
     new DoLater config
   
   beforeEach: (done) ->
-    mongoPool = require('mongo-pool2')
 
     mongoPool.connect config, (err, db) ->
       if err
         return done err
       db.collection(config.collection).remove {}, done
+    , true
