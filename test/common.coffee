@@ -19,4 +19,3 @@ module.exports =
       if err
         return done err
       db.collection(config.collection).remove {}, done
-    , true
