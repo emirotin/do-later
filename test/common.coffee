@@ -1,4 +1,4 @@
-DoLater = require('..')
+DoLater = require('../src/do-later')
 mongoPool = require('mongo-pool2')
 
 config =
