@@ -5,7 +5,7 @@ describe 'DoLater', ->
   beforeEach (done) ->
     testsCommon.beforeEach(done)
 
-  it 'should properly handle removing vent listeners', (done) ->
+  it 'should properly handle removing event listeners', (done) ->
     res = 0
     scheduler = testsCommon.createDoLater()
 
